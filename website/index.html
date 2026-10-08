@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 2am Shoppers — AI Shopping Companion</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-header" id="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-icon">🛒</span>
+        <span>2am Shoppers</span>
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#eslitec">Eslitec Fit</a>
+        <a href="#features">Features</a>
+        <a href="#journey">Journey</a>
+        <a href="#mvp">MVP</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Eslitec Hackathon · Problem Statement 1 · Conversational Commerce
+      </div>
+      <h1 class="hero-title">
+        The <span class="gradient-text">2am Shoppers</span>
+      </h1>
+      <p class="hero-sub">An AI shopping companion that remembers your interests, follows your budget and adapts when you respond.</p>
+      <p class="hero-desc">For working youths who shop across multiple platforms and forget what they saved. For businesses that need to turn customer data into relevant conversations that lead to repeat purchases.</p>
+      <div class="hero-cta">
+        <a href="#journey" class="btn btn-primary">See the Demo Journey</a>
+        <a href="#solution" class="btn btn-ghost">How it works</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-chip"><span class="chip-label">Target</span> Working youths (18–30)</div>
+        <div class="meta-chip"><span class="chip-label">Focus</span> Customer retention &amp; repeat purchase</div>
+        <div class="meta-chip"><span class="chip-label">Status</span> Proposed MVP</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section section-alt" id="problem">
+    <div class="container">
+      <div class="section-label">01 · Problem</div>
+      <h2 class="section-title">Shopping scattered. Follow-ups generic. Retention hard to measure.</h2>
+      <p class="section-desc">Working youths shop across multiple platforms, save products they later forget and struggle to track useful offers. Businesses hold customer data but can't turn it into relevant conversations.</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">🛍️</div>
+          <h3>Scattered Shopping</h3>
+          <p>Products saved across Shopee, SHEIN, Taobao. Repeated searches for the same items. No way to track it all.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">📢</div>
+          <h3>Generic Promotions</h3>
+          <p>Businesses send the same message to everyone. Doesn't match actual needs, budget or timing.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">📊</div>
+          <h3>Unmeasured Retention</h3>
+          <p>Hard to tell whether outreach brings customers back. No clear link between engagement and repeat purchase.</p>
+        </div>
+      </div>
+      <div class="example-block">
+        <div class="example-label">What this looks like in practice</div>
+        <p><strong>Customer view:</strong> You save office shoes on three different sites, forget about them, then search again two weeks later.</p>
+        <p><strong>Business view:</strong> You know this customer bought coffee once. You send a generic "20% off" message. They don't respond. You can't tell why.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="section" id="solution">
+    <div class="container">
+      <div class="section-label">02 · Solution</div>
+      <h2 class="section-title">One app. Personalized conversations. Adaptive journeys.</h2>
+      <p class="section-desc">The 2am Shoppers brings shopping information together, remembers confirmed preferences and starts relevant conversations that adapt to customer responses.</p>
+      
+      <div class="simple-example">
+        <div class="simple-label">Simple example</div>
+        <div class="simple-content">
+          <p>You save office shoes, set a budget under $40 and ask for a payday reminder.</p>
+          <p>→ The app reminds you at your chosen time, checks product info and suggests suitable options.</p>
+          <p>→ If you say the style is wrong, it changes its suggestions.</p>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card" data-step="1">
+          <div class="step-num">01</div>
+          <div class="step-icon">⚙️</div>
+          <h3>Learn Preferences</h3>
+          <p>Interests, budget, favorite shops, notification timing and quiet hours.</p>
+        </div>
+        <div class="step-card" data-step="2">
+          <div class="step-num">02</div>
+          <div class="step-icon">📥</div>
+          <h3>Bring Data Together</h3>
+          <p>Purchase records, saved links, in-app searches and merchant customer records.</p>
+        </div>
+        <div class="step-card" data-step="3">
+          <div class="step-num">03</div>
+          <div class="step-icon">🤖</div>
+          <h3>Decide What's Useful</h3>
+          <p>Saved item to revisit, recurring purchase, verified offer or replenishment check.</p>
+        </div>
+        <div class="step-card" data-step="4">
+          <div class="step-num">04</div>
+          <div class="step-icon">💬</div>
+          <h3>Send Casual Notification</h3>
+          <p>"Still thinking about that bag? It's now within your $30 budget."</p>
+        </div>
+        <div class="step-card" data-step="5">
+          <div class="step-num">05</div>
+          <div class="step-icon">🔄</div>
+          <h3>Adapt to Response</h3>
+          <p>Too expensive? Show alternatives. Wrong style? Update suggestions. Remind later? Schedule it.</p>
+        </div>
+        <div class="step-card" data-step="6">
+          <div class="step-num">06</div>
+          <div class="step-icon">🛒</div>
+          <h3>Help Next Step</h3>
+          <p>Show options, explain differences, open purchase link. User completes checkout.</p>
+        </div>
+        <div class="step-card" data-step="7">
+          <div class="step-num">07</div>
+          <div class="step-icon">✅</div>
+          <h3>Follow Up</h3>
+          <p>Check satisfaction. Route problems to support. Offer replenishment when relevant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESLITEC FIT -->
+  <section class="section section-alt" id="eslitec">
+    <div class="container">
+      <div class="section-label">03 · Positioning</div>
+      <h2 class="section-title">How this fits Eslitec — and our own direction</h2>
+      <p class="section-desc">Eslitec focuses on AI CRM for SMBs. MantaGO supports conversational commerce, chatbots and connected messaging. The 2am Shoppers is a proposed customer-retention app in the same domain, designed for working youths.</p>
+      
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Eslitec capability</th><th>Our implementation</th><th>Our emphasis</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AI CRM &amp; customer management</td>
+              <td>Import merchant customer records and orders</td>
+              <td>Keep confirmed budgets, interests and timing alongside purchase history</td>
+            </tr>
+            <tr>
+              <td>Conversational commerce</td>
+              <td>Start relevant conversations, guide next action</td>
+              <td>Casual, useful language for working youths</td>
+            </tr>
+            <tr>
+              <td>Automated marketing</td>
+              <td>Run journeys from customer-data triggers</td>
+              <td>Adapt timing and offers when customer responds</td>
+            </tr>
+            <tr>
+              <td>Connected messaging</td>
+              <td>Keep journey state in one dashboard</td>
+              <td>Begin with app chat + push; add external channels later</td>
+            </tr>
+            <tr>
+              <td>Membership &amp; loyalty</td>
+              <td>Recognize returning customers and benefits</td>
+              <td>Offer reordering and optional colleague bundles</td>
+            </tr>
+            <tr>
+              <td>Business outcomes</td>
+              <td>Track retention and repeat purchases</td>
+              <td>Show reason for engagement and verified result</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="team-connection">
+        <h3>What makes this personal to our team</h3>
+        <p>The idea carries forward the strongest parts of our original scheduling agent:</p>
+        <ul class="team-list">
+          <li><strong>Prioritisation:</strong> Decide which customer journey needs attention and why.</li>
+          <li><strong>Preference-based planning:</strong> Fit reminders around dates and quiet hours the customer chooses.</li>
+          <li><strong>Change recovery:</strong> Replan when price, stock, needs or purchase status changes.</li>
+          <li><strong>Action with control:</strong> Execute allowed reminders while requiring approval for spending.</li>
+          <li><strong>Visible outcomes:</strong> Show what the agent did and whether it led to another purchase.</li>
+        </ul>
+        <p class="team-note"><strong>"2am" is the brand personality, not a default notification time.</strong> Notifications respect each customer's quiet hours.</p>
+      </div>
+
+      <div class="inspiration-grid">
+        <h3>E-Commerce inspirations</h3>
+        <div class="inspo-chips">
+          <div class="inspo-chip"><span class="chip-icon">🛍️</span> <strong>Shopee</strong> — Wishlists, offers, reordering</div>
+          <div class="inspo-chip"><span class="chip-icon">👗</span> <strong>SHEIN</strong> — Preference-based discovery</div>
+          <div class="inspo-chip"><span class="chip-icon">📱</span> <strong>TikTok Shop</strong> — Product videos, content shopping</div>
+          <div class="inspo-chip"><span class="chip-icon">🏪</span> <strong>Taobao</strong> — Product discovery, comparisons</div>
+          <div class="inspo-chip"><span class="chip-icon">🤝</span> <strong>Pinduoduo</strong> — Social shopping, group deals</div>
+        </div>
+        <p class="inspo-note">These are design inspirations. This brief does not assume all platforms provide integration access.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-label">04 · Key Features</div>
+      <h2 class="section-title">Two views: Customer and Business</h2>
+      
+      <div class="views-grid">
+        <div class="view-card view-customer">
+          <div class="view-header">
+            <span class="view-icon">👤</span>
+            <h3>Customer View</h3>
+          </div>
+          <ul class="view-list">
+            <li>Preferences and budget settings</li>
+            <li>Saved products and reminders</li>
+            <li>Personalized discovery feed (TikTok-inspired)</li>
+            <li>AI shopping conversation</li>
+            <li>Purchase history and reorder links</li>
+            <li>Notification and data controls</li>
+          </ul>
+        </div>
+        <div class="view-card view-business">
+          <div class="view-header">
+            <span class="view-icon">💼</span>
+            <h3>Business View</h3>
+          </div>
+          <ul class="view-list">
+            <li>Customer records and purchase history</li>
+            <li>Customer segments and active journeys</li>
+            <li>Reasons for proposed engagement</li>
+            <li>Conversation outcomes and support handovers</li>
+            <li>Campaign drafts and approval controls</li>
+            <li>Repeat-purchase and retention reporting</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Customer engagement approaches</h3>
+      <div class="approach-grid">
+        <div class="approach-card">
+          <h4>💬 Interest-based conversations</h4>
+          <p>Ask what matters about a saved product → Understand intent and address hesitation</p>
+        </div>
+        <div class="approach-card">
+          <h4>🎥 Personalized product content</h4>
+          <p>Show demonstrations or comparisons → Help evaluate suitable options</p>
+        </div>
+        <div class="approach-card">
+          <h4>📅 Customer-chosen payday reminders</h4>
+          <p>Revisit an item on a selected date → Respect timing, encourage return visit</p>
+        </div>
+        <div class="approach-card">
+          <h4>🤝 Colleague group buying</h4>
+          <p>Offer approved coffee or snack bundles → Make social repeat shopping convenient</p>
+        </div>
+        <div class="approach-card">
+          <h4>🔄 Smart replenishment</h4>
+          <p>Ask whether a regular product is running low → Make repeat purchases easier</p>
+        </div>
+        <div class="approach-card">
+          <h4>✅ After-purchase care</h4>
+          <p>Ask about satisfaction, route problems to support → Address reasons customers leave</p>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Example notifications</h3>
+      <div class="notif-examples">
+        <div class="notif-bubble">Still thinking about that bag? 👀 It's now within your $30 budget.</div>
+        <div class="notif-bubble">Coffee check ☕ Running low, or still stocked?</div>
+        <div class="notif-bubble">You asked for a payday reminder—want to revisit your wishlist?</div>
+        <div class="notif-bubble">Buying snacks with your colleagues? There's an eligible group bundle to check out.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO JOURNEY -->
+  <section class="section section-alt" id="journey">
+    <div class="container">
+      <div class="section-label">05 · Demo Journey</div>
+      <h2 class="section-title">Example: Coffee replenishment for a returning customer</h2>
+      <p class="section-desc"><strong>Customer:</strong> Alicia, a young working adult. <strong>Merchant:</strong> A fictional coffee and workday-snack shop.</p>
+
+      <div class="journey-timeline">
+        <div class="journey-step">
+          <div class="journey-num">1</div>
+          <div class="journey-content">
+            <p>Alicia previously bought coffee from the shop and agreed to relevant updates.</p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-num">2</div>
+          <div class="journey-content">
+            <p>She searches for <strong>office coffee</strong> inside The 2am Shoppers.</p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-num">3</div>
+          <div class="journey-content">
+            <p>The app shows a suitable product demonstration in its discovery feed.</p>
+          </div>
+        </div>
+        <div class="journey-step journey-response">
+          <div class="journey-num">4</div>
+          <div class="journey-content">
+            <p>Alicia responds: <strong>"Interested, but too expensive."</strong></p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-num">5</div>
+          <div class="journey-content">
+            <p>The agent checks the merchant's catalogue and offers a smaller pack or an eligible colleague bundle.</p>
+          </div>
+        </div>
+        <div class="journey-step journey-response">
+          <div class="journey-num">6</div>
+          <div class="journey-content">
+            <p>Alicia chooses: <strong>"Remind me on the 25th."</strong></p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-num">7</div>
+          <div class="journey-content">
+            <p>The agent schedules the reminder and pauses immediate follow-ups.</p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-num">8</div>
+          <div class="journey-content">
+            <p>Before the reminder, it checks whether the product and offer are still available.</p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-num">9</div>
+          <div class="journey-content">
+            <p>If something changed, it explains the change and offers suitable alternatives.</p>
+          </div>
+        </div>
+        <div class="journey-step journey-purchase">
+          <div class="journey-num">10</div>
+          <div class="journey-content">
+            <p>Alicia opens the listing, reviews the purchase and completes checkout.</p>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-num">11</div>
+          <div class="journey-content">
+            <p>The app records a verified purchase, ends the current prompt and later checks satisfaction.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-note">
+        <strong>Key point:</strong> This journey has a clear trigger, decisions, adaptations and exits. A product-link click alone is not treated as a completed purchase.
+      </div>
+    </div>
+  </section>
+
+  <!-- MVP SCOPE -->
+  <section class="section" id="mvp">
+    <div class="container">
+      <div class="section-label">06 · MVP Scope</div>
+      <h2 class="section-title">Hackathon demonstration scope</h2>
+      <p class="section-desc">Build one complete journey for one fictional merchant and product category before expanding across marketplaces.</p>
+
+      <div class="demo-focus">
+        <h3>Primary demo</h3>
+        <p>Turn a merchant's existing coffee customers into personalised conversations that lead to a tracked repeat order.</p>
+        <p>Show one customer selecting a later date, one choosing a lower-cost option and one requiring human support.</p>
+      </div>
+
+      <div class="scope-grid">
+        <div class="scope-col scope-core">
+          <h3>✅ Core Features (MVP)</h3>
+          <ul>
+            <li>Customer onboarding: interests, budget, notifications</li>
+            <li>Existing customer records + purchase-history import</li>
+            <li>Merchant onboarding: goals, offers, contact limits</li>
+            <li>Product catalogue, shared links, in-app search</li>
+            <li>Simple customer segmentation</li>
+            <li>AI conversation with response-based adaptation</li>
+            <li>Casual notifications and user-chosen reminders</li>
+            <li>One after-purchase or replenishment journey</li>
+            <li>Business dashboard with journey explanations</li>
+            <li>Human support handover and clear exits</li>
+          </ul>
+        </div>
+        <div class="scope-col scope-demo">
+          <h3>🎬 Demonstration Scope</h3>
+          <p>Use sample data to demonstrate 2–3 customers receiving different journeys.</p>
+          <p><strong>Clearly label:</strong> Simulated purchases, feeds, notifications or external integrations.</p>
+          <p>Keep real push notifications or merchant integrations only where the build supports them.</p>
+        </div>
+        <div class="scope-col scope-later">
+          <h3>🚀 Later Enhancements</h3>
+          <ul>
+            <li>Additional marketplace integrations</li>
+            <li>Real short-video content and ad publishing</li>
+            <li>Group-buy checkout</li>
+            <li>Multilingual conversations</li>
+            <li>Light/dark mode</li>
+            <li>Broader analytics and product comparisons</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Business process (behind the scenes)</h3>
+      <div class="process-steps">
+        <div class="proc-step">1. Merchant onboarding → goals, records, catalogue, limits</div>
+        <div class="proc-step">2. Check data quality → missing dates, duplicates, consent</div>
+        <div class="proc-step">3. Segment customers → assign relevant journeys</div>
+        <div class="proc-step">4. Select a trigger → first order, reminder date, replenishment, inactivity</div>
+        <div class="proc-step">5. Choose conversation → history + catalogue + intent + preferences</div>
+        <div class="proc-step">6. Start approved journey → send via implemented channel</div>
+        <div class="proc-step">7. Adapt and act → respond, remind later, recheck price/stock</div>
+        <div class="proc-step">8. Hand over when needed → escalate to staff, pause sales</div>
+        <div class="proc-step">9. Exit or follow up → after purchase, opt-out or limit</div>
+        <div class="proc-step">10. Measure outcomes → link orders to journeys, report vs holdout</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="section section-alt" id="metrics">
+    <div class="container">
+      <div class="section-label">07 · Success Metrics</div>
+      <h2 class="section-title">How we measure retention and repeat purchase</h2>
+      
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">🔄</div>
+          <h4>Repeat-purchase rate</h4>
+          <p>Share of existing customers who buy again within a defined period</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">📈</div>
+          <h4>Retention</h4>
+          <p>Share of a customer cohort who remain active purchasers</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">⏱️</div>
+          <h4>Time to next purchase</h4>
+          <p>Whether customers return sooner after useful engagement</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">💰</div>
+          <h4>Customer lifetime value</h4>
+          <p>Longer-term contribution; estimates must state assumptions</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">💬</div>
+          <h4>Conversation-to-purchase</h4>
+          <p>Share of engaged customers with confirmed purchase in attribution window</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">⚠️</div>
+          <h4>Opt-outs &amp; complaints</h4>
+          <p>Whether engagement is becoming unwanted</p>
+        </div>
+      </div>
+
+      <div class="pilot-note">
+        <h3>For a real pilot</h3>
+        <p>Compare eligible customers receiving the journey with a randomly assigned holdout group. Track repeat purchases from the participating business, because purchases elsewhere do not establish retention for that merchant.</p>
+        <p><strong>Hackathon note:</strong> Sample data can demonstrate the reporting process. It does not prove a real increase in retention or customer lifetime value.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PITCH -->
+  <section class="section pitch-section" id="pitch">
+    <div class="container">
+      <div class="section-label">08 · Pitch</div>
+      <div class="pitch-inner">
+        <div class="pitch-deco">🛒</div>
+        <blockquote class="pitch-quote">
+          The 2am Shoppers helps e-commerce businesses turn the customer data they already hold into adaptive shopping conversations for working youths. Its AI remembers confirmed interests, budgets and preferred timing, sends casual and relevant follow-ups, and changes the journey when customer needs change. Businesses can hand conversations to staff when needed and measure whether existing customers return and buy again.
+        </blockquote>
+        <div class="pitch-team">The 2am Shoppers · Eslitec Hackathon · Problem Statement 1</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="logo-icon">🛒</span>
+        <span>The 2am Shoppers</span>
+      </div>
+      <p class="footer-tagline">An AI shopping companion for working youths and the businesses that serve them.</p>
+      <p class="footer-note">Eslitec Hackathon · Problem Statement 1 · Proposed MVP concept</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

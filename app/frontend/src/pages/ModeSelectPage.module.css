@@ -1,0 +1,55 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg);
+  background-image: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(240,78,110,.12) 0%, transparent 70%);
+}
+
+.inner { text-align: center; max-width: 620px; width: 100%; }
+
+.logo { font-size: 3rem; margin-bottom: 16px; filter: drop-shadow(0 0 16px rgba(240,78,110,.4)); }
+
+.title { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 10px; }
+
+.sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 40px; }
+
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+
+.card {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 20px;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: var(--font);
+  text-align: left;
+  position: relative;
+}
+.card:hover { transform: translateY(-4px); }
+
+.cardCustomer:hover { border-color: var(--coral-light); background: rgba(240,78,110,.06); }
+.cardBusiness:hover { border-color: var(--amber-light); background: rgba(245,158,11,.06); }
+
+.cardEmoji { font-size: 2rem; display: block; margin-bottom: 12px; }
+.card h2   { font-size: 1.1rem; color: var(--text); margin-bottom: 8px; }
+.card p    { font-size: .85rem; color: var(--text-muted); line-height: 1.5; }
+
+.cardArrow {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 1.1rem;
+  color: var(--text-dim);
+}
+.card:hover .cardArrow { color: var(--coral-light); }
+.cardBusiness:hover .cardArrow { color: var(--amber-light); }
+
+.hackathon { font-size: .75rem; color: var(--text-dim); }
+
+@media (max-width: 480px) {
+  .cards { grid-template-columns: 1fr; }
+}

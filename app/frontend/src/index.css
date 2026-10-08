@@ -1,0 +1,125 @@
+/* ============================================================
+   2am Shoppers App — Global Styles
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #08090f;
+  --bg-alt:       #0e0f1a;
+  --bg-card:      #111320;
+  --bg-card2:     #161828;
+  --sidebar-w:    248px;
+
+  --border:       #1e2035;
+  --border-light: #262840;
+
+  --coral:        #f04e6e;
+  --coral-light:  #ff8fa3;
+  --coral-dark:   #c03050;
+  --amber:        #f59e0b;
+  --amber-light:  #fcd34d;
+  --violet:       #7c3aed;
+  --violet-light: #a78bfa;
+  --teal:         #0891b2;
+  --teal-light:   #67e8f9;
+  --green:        #059669;
+  --green-light:  #6ee7b7;
+  --red:          #dc2626;
+  --red-light:    #fca5a5;
+
+  --text:         #f1f5f9;
+  --text-muted:   #94a3b8;
+  --text-dim:     #475569;
+
+  --gradient:     linear-gradient(135deg, #f04e6e 0%, #f59e0b 100%);
+
+  --radius:       10px;
+  --radius-sm:    6px;
+  --font:         'Inter', system-ui, sans-serif;
+}
+
+html { font-size: 16px; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--coral-light); text-decoration: none; }
+h1,h2,h3,h4 { line-height: 1.25; font-weight: 700; }
+p { color: var(--text-muted); }
+strong { color: var(--text); }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3d5a; }
+
+/* Utilities */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.badge-coral  { background: rgba(240,78,110,.15);  color: var(--coral-light);  border: 1px solid rgba(240,78,110,.25); }
+.badge-amber  { background: rgba(245,158,11,.15);  color: var(--amber-light);  border: 1px solid rgba(245,158,11,.25); }
+.badge-green  { background: rgba(5,150,105,.15);   color: var(--green-light);  border: 1px solid rgba(5,150,105,.25); }
+.badge-violet { background: rgba(124,58,237,.15);  color: var(--violet-light); border: 1px solid rgba(124,58,237,.25); }
+.badge-teal   { background: rgba(8,145,178,.15);   color: var(--teal-light);   border: 1px solid rgba(8,145,178,.25); }
+.badge-red    { background: rgba(220,38,38,.15);   color: var(--red-light);    border: 1px solid rgba(220,38,38,.25); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .875rem;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: none;
+  transition: all .2s;
+  font-family: var(--font);
+}
+.btn-primary {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(240,78,110,.3);
+}
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-ghost  { background: transparent; color: var(--text); border: 1px solid var(--border-light); }
+.btn-ghost:hover { background: var(--bg-card); border-color: var(--coral-light); }
+.btn-danger { background: rgba(220,38,38,.12); color: var(--red-light); border: 1px solid rgba(220,38,38,.28); }
+.btn-danger:hover { background: rgba(220,38,38,.25); }
+.btn-sm { padding: 6px 13px; font-size: .8rem; }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.page-title { font-size: 1.5rem; color: var(--text); margin-bottom: 4px; }
+.page-sub   { font-size: .88rem; color: var(--text-muted); margin-bottom: 24px; }
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
