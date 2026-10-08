@@ -1,0 +1,58 @@
+.toolbar  { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+.counts   { display: flex; gap: 8px; }
+
+.form      { margin-bottom: 20px; border-top: 2px solid var(--red-light); }
+.formTitle { font-size: .95rem; color: var(--text); margin-bottom: 14px; }
+.stack     { display: flex; flex-direction: column; gap: 13px; margin-bottom: 14px; }
+.label     { display: flex; flex-direction: column; gap: 5px; font-size: .8rem; font-weight: 500; color: var(--text-muted); }
+.input {
+  background: var(--bg-card2); border: 1px solid var(--border-light); border-radius: var(--radius-sm);
+  color: var(--text); font-family: var(--font); font-size: .875rem;
+  padding: 8px 11px; outline: none; transition: border-color .2s; width: 100%;
+}
+.input:focus { border-color: var(--red-light); }
+.textarea { resize: vertical; }
+
+.allClear { text-align: center; font-size: .9rem; color: var(--green-light); padding: 28px; }
+
+.list { display: flex; flex-direction: column; gap: 12px; }
+
+.openCard { border-top: 2px solid var(--red-light); }
+
+.openHeader { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.openIcon   { font-size: 1.4rem; flex-shrink: 0; }
+.openInfo   { flex: 1; }
+.openName   { font-size: .95rem; font-weight: 600; color: var(--text); }
+.openMeta   { font-size: .75rem; color: var(--text-dim); margin-top: 1px; }
+
+.openReason {
+  font-size: .875rem; color: var(--text-muted); margin-bottom: 10px;
+  background: var(--bg-card2); border-radius: 6px; padding: 8px 12px;
+}
+
+.openContext { margin-bottom: 14px; }
+.contextLabel {
+  font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--text-dim); margin-bottom: 6px;
+}
+.contextText {
+  background: var(--bg-card2); border: 1px solid var(--border);
+  border-radius: 6px; padding: 10px 12px; font-size: .85rem;
+  color: var(--text-muted); white-space: pre-wrap;
+}
+
+.openActions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+
+.pauseNote {
+  font-size: .78rem; color: var(--amber-light);
+  background: rgba(245,158,11,.07); border: 1px solid rgba(245,158,11,.2);
+  border-radius: 6px; padding: 7px 11px;
+}
+
+.resolvedCard {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; opacity: .6;
+}
+.resolvedIcon { font-size: 1rem; color: var(--green-light); }
+.resolvedName { font-size: .88rem; font-weight: 500; color: var(--text); }
+.resolvedMeta { font-size: .75rem; color: var(--text-dim); }

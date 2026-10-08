@@ -1,0 +1,33 @@
+.form { display: flex; flex-direction: column; gap: 0; max-width: 560px; }
+.section { padding: 24px 0; border-bottom: 1px solid var(--border); }
+.section:last-of-type { border-bottom: none; }
+.sectionHead { font-size: 1rem; color: var(--text); margin-bottom: 14px; }
+
+.label {
+  display: flex; flex-direction: column; gap: 5px;
+  font-size: .82rem; font-weight: 500; color: var(--text-muted); margin-bottom: 12px;
+}
+.label:last-child { margin-bottom: 0; }
+
+.input {
+  background: var(--bg-card); border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); color: var(--text); font-family: var(--font);
+  font-size: .875rem; padding: 9px 12px; outline: none; transition: border-color .2s; width: 100%;
+}
+.input:focus { border-color: var(--coral-light); }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.interestGrid { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 99px; padding: 6px 13px; font-size: .8rem;
+  font-weight: 500; color: var(--text-muted); cursor: pointer;
+  font-family: var(--font); transition: all .15s;
+}
+.chip:hover { border-color: var(--coral); color: var(--text); }
+.chipOn { background: rgba(240,78,110,.12); border-color: var(--coral-light); color: var(--coral-light); }
+
+.subtle { font-size: .78rem; color: var(--text-dim); font-style: italic; margin-top: 6px; }
+
+.actions { display: flex; gap: 12px; align-items: center; padding-top: 24px; }

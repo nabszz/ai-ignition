@@ -1,21 +1,16 @@
 /**
  * Central Express error handler.
- * Catches errors thrown in route handlers and returns a consistent JSON shape.
+ * Returns a consistent { error: message } JSON response.
  */
 export function errorHandler(err, _req, res, _next) {
-  console.error('[error]', err);
-
-  const status  = err.status ?? err.statusCode ?? 500;
-  const message = err.message ?? 'Internal server error';
-
-  res.status(status).json({ error: message });
+  console.error('[error]', err.message ?? err);
+  const status = err.status ?? err.statusCode ?? 500;
+  res.status(status).json({ error: err.message ?? 'Internal server error' });
 }
 
 /**
- * Wrap an async route handler so errors are forwarded to errorHandler
- * without needing try/catch in every route.
- *
- * Usage:  router.get('/path', asyncHandler(async (req, res) => { ... }))
+ * Wraps an async route handler and forwards errors to errorHandler.
+ * Usage: router.get('/path', asyncHandler(async (req, res) => { ... }))
  */
 export function asyncHandler(fn) {
   return (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);

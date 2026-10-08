@@ -1,5 +1,5 @@
 {
-  "name": "2am-deployers-backend",
+  "name": "2am-shoppers-backend",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -8,13 +8,13 @@
     "start": "node src/server.js"
   },
   "dependencies": {
-    "express":         "^4.21.1",
-    "cors":            "^2.8.5",
-    "dotenv":          "^16.4.5",
-    "uuid":            "^10.0.0",
-    "better-sqlite3":  "^11.3.0",
-    "jsonwebtoken":    "^9.0.2",
-    "bcryptjs":        "^2.4.3"
+    "express":        "^4.21.1",
+    "cors":           "^2.8.5",
+    "dotenv":         "^16.4.5",
+    "uuid":           "^10.0.0",
+    "better-sqlite3": "^11.3.0",
+    "jsonwebtoken":   "^9.0.2",
+    "bcryptjs":       "^2.4.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

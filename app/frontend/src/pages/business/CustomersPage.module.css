@@ -1,0 +1,60 @@
+.toolbar { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.filterBtn {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 99px; padding: 5px 12px; font-size: .78rem;
+  font-weight: 500; color: var(--text-muted); cursor: pointer;
+  font-family: var(--font); transition: all .15s; white-space: nowrap;
+}
+.filterBtn:hover { border-color: var(--amber); color: var(--text); }
+.filterBtn.active { background: rgba(245,158,11,.12); border-color: var(--amber-light); color: var(--amber-light); }
+
+.form       { margin-bottom: 20px; border-top: 2px solid var(--amber-light); }
+.formTitle  { font-size: .95rem; color: var(--text); margin-bottom: 14px; }
+.formGrid   { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.label      { display: flex; flex-direction: column; gap: 5px; font-size: .8rem; font-weight: 500; color: var(--text-muted); }
+.input {
+  background: var(--bg-card2); border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); color: var(--text); font-family: var(--font);
+  font-size: .875rem; padding: 8px 11px; outline: none; transition: border-color .2s; width: 100%;
+}
+.input:focus { border-color: var(--amber-light); }
+.subtle  { font-size: .76rem; color: var(--text-dim); font-style: italic; margin-top: 10px; }
+
+.table { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+
+.tableHead {
+  display: grid; grid-template-columns: 2fr 1.5fr 60px 100px 120px;
+  gap: 12px; padding: 10px 16px;
+  background: var(--bg-card2); font-size: .75rem; font-weight: 600;
+  color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em;
+}
+
+.tableRow {
+  display: grid; grid-template-columns: 2fr 1.5fr 60px 100px 120px;
+  gap: 12px; padding: 12px 16px; align-items: center;
+  border-top: 1px solid var(--border);
+  transition: background .15s;
+}
+.tableRow:hover { background: rgba(255,255,255,.02); }
+
+.custName   { font-size: .88rem; font-weight: 600; color: var(--text); }
+.custNotes  { font-size: .75rem; color: var(--text-dim); margin-top: 2px; }
+.custOrders { font-size: .875rem; color: var(--text-muted); }
+.custDate   { font-size: .8rem;  color: var(--text-dim); font-family: monospace; }
+.rowActions { display: flex; gap: 6px; }
+
+.segSelect {
+  background: var(--bg-card2); border: 1px solid var(--border-light);
+  border-radius: 4px; color: var(--text); font-size: .75rem;
+  padding: 4px 6px; font-family: var(--font); outline: none; width: 100%;
+}
+
+.empty { text-align: center; font-size: .88rem; color: var(--text-muted); padding: 32px; }
+
+@media (max-width: 640px) {
+  .tableHead, .tableRow { grid-template-columns: 1fr 1fr; }
+  .tableHead span:nth-child(n+3), .tableRow span:nth-child(n+3) { display: none; }
+  .rowActions { grid-column: 1 / -1; }
+  .formGrid   { grid-template-columns: 1fr; }
+}
