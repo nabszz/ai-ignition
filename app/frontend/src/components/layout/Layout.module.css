@@ -215,3 +215,20 @@
   .menuBtn { display: flex; }
   .content { padding: 18px 16px; }
 }
+
+/* Logout button — sits next to the switch button in the sidebar footer */
+.logoutBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  width: 26px; height: 26px;
+  font-size: .9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all .2s;
+}
+.logoutBtn:hover { color: var(--red-light); border-color: var(--red-light); }

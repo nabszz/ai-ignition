@@ -26,6 +26,10 @@
         <a href="#journey">Journey</a>
         <a href="#mvp">MVP</a>
       </nav>
+      <div class="nav-auth-btns">
+        <a href="#get-started" class="nav-signin-btn">Sign in</a>
+        <a href="#get-started" class="nav-signup-btn">Get started</a>
+      </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -493,6 +497,124 @@
         <p>Compare eligible customers receiving the journey with a randomly assigned holdout group. Track repeat purchases from the participating business, because purchases elsewhere do not establish retention for that merchant.</p>
         <p><strong>Hackathon note:</strong> Sample data can demonstrate the reporting process. It does not prove a real increase in retention or customer lifetime value.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- GET STARTED / AUTH -->
+  <section class="section get-started-section" id="get-started">
+    <div class="container">
+      <div class="section-label">Try it now</div>
+      <h2 class="section-title get-started-title">
+        Ready to shop smarter?
+      </h2>
+      <p class="section-desc get-started-desc">
+        Create an account to start saving products, setting budgets and getting personalised reminders — or sign in if you already have one.
+      </p>
+
+      <!-- Tab switcher -->
+      <div class="auth-panel">
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab auth-tab-active" id="tab-signin" role="tab"
+            aria-selected="true" aria-controls="panel-signin" onclick="switchTab('signin')">
+            Sign in
+          </button>
+          <button class="auth-tab" id="tab-signup" role="tab"
+            aria-selected="false" aria-controls="panel-signup" onclick="switchTab('signup')">
+            Create account
+          </button>
+        </div>
+
+        <!-- Sign-in panel -->
+        <div class="auth-form-panel" id="panel-signin" role="tabpanel">
+          <div class="admin-hint">
+            <span>⚡</span>
+            <span>Demo admin — username: <strong>user</strong> · password: <strong>password</strong></span>
+          </div>
+          <form class="auth-form" id="form-signin" onsubmit="handleSignin(event)">
+            <label class="auth-label">
+              Username
+              <input class="auth-input" type="text" id="signin-username"
+                placeholder="e.g. user" autocomplete="username" required />
+            </label>
+            <label class="auth-label">
+              Password
+              <div class="auth-password-wrap">
+                <input class="auth-input" type="password" id="signin-password"
+                  placeholder="••••••••" autocomplete="current-password" required />
+                <button type="button" class="auth-toggle-pass"
+                  onclick="togglePass('signin-password', this)" aria-label="Show password">👁️</button>
+              </div>
+            </label>
+            <div class="auth-error" id="signin-error" aria-live="polite"></div>
+            <button type="submit" class="btn btn-primary auth-submit" id="signin-btn">
+              Sign in →
+            </button>
+          </form>
+          <p class="auth-switch">
+            No account yet?
+            <button class="auth-switch-link" onclick="switchTab('signup')">Create one free</button>
+          </p>
+        </div>
+
+        <!-- Sign-up panel -->
+        <div class="auth-form-panel auth-hidden" id="panel-signup" role="tabpanel">
+          <div class="role-toggle">
+            <button class="role-btn role-active" id="role-customer"
+              onclick="setRole('customer')" type="button">👤 Shopper</button>
+            <button class="role-btn" id="role-merchant"
+              onclick="setRole('merchant')" type="button">💼 Merchant</button>
+          </div>
+          <form class="auth-form" id="form-signup" onsubmit="handleSignup(event)">
+            <label class="auth-label">
+              Username
+              <input class="auth-input" type="text" id="signup-username"
+                placeholder="Choose a username" autocomplete="username" required />
+            </label>
+            <label class="auth-label">
+              Email <span class="auth-optional">(optional)</span>
+              <input class="auth-input" type="email" id="signup-email"
+                placeholder="you@example.com" autocomplete="email" />
+            </label>
+            <label class="auth-label">
+              Password
+              <div class="auth-password-wrap">
+                <input class="auth-input" type="password" id="signup-password"
+                  placeholder="At least 6 characters" autocomplete="new-password" required />
+                <button type="button" class="auth-toggle-pass"
+                  onclick="togglePass('signup-password', this)" aria-label="Show password">👁️</button>
+              </div>
+            </label>
+            <label class="auth-label">
+              Confirm password
+              <input class="auth-input" type="password" id="signup-confirm"
+                placeholder="Repeat password" autocomplete="new-password" required />
+            </label>
+            <div class="auth-error" id="signup-error" aria-live="polite"></div>
+            <button type="submit" class="btn btn-primary auth-submit" id="signup-btn">
+              Create account →
+            </button>
+          </form>
+          <p class="auth-switch">
+            Already have an account?
+            <button class="auth-switch-link" onclick="switchTab('signin')">Sign in</button>
+          </p>
+        </div>
+
+        <!-- Success state (shown after auth) -->
+        <div class="auth-success auth-hidden" id="auth-success">
+          <div class="auth-success-icon">✅</div>
+          <h3 class="auth-success-title" id="auth-success-title">Welcome!</h3>
+          <p class="auth-success-sub" id="auth-success-sub">Redirecting you to the app…</p>
+          <a class="btn btn-primary auth-open-btn" id="auth-open-btn"
+            href="http://localhost:3003" target="_blank" rel="noopener">
+            Open the app →
+          </a>
+        </div>
+      </div>
+
+      <p class="auth-note">
+        The app runs at <code>localhost:3003</code>. Accounts created here are stored in the app's local storage — start the app first with <code>npm run dev</code>.
+      </p>
     </div>
   </section>
 

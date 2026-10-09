@@ -1,0 +1,188 @@
+/* Shared styles for LoginPage and SignupPage */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 70% 55% at 50% 20%, rgba(240,78,110,.12) 0%, transparent 70%),
+    linear-gradient(rgba(240,78,110,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240,78,110,.04) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 56px rgba(0,0,0,.55);
+  animation: cardIn .35s ease;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header ── */
+.header {
+  padding: 28px 28px 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  display: inline-block;
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+.logo:hover { color: var(--coral-light); }
+
+.title { font-size: 1.5rem; color: var(--text); margin-bottom: 6px; }
+.sub   { font-size: .88rem; color: var(--text-muted); }
+
+/* ── Admin hint ── */
+.adminHint {
+  margin: 0 28px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(240,78,110,.08);
+  border: 1px solid rgba(240,78,110,.22);
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-size: .8rem;
+  color: var(--coral-light);
+}
+.adminIcon { font-size: .9rem; flex-shrink: 0; }
+.adminHint strong { color: var(--text); }
+
+/* ── Form ── */
+.form {
+  padding: 0 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.input {
+  background: var(--bg-card2);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: .9rem;
+  padding: 10px 13px;
+  outline: none;
+  transition: border-color .2s;
+  width: 100%;
+}
+.input:focus { border-color: var(--coral-light); }
+.input::placeholder { color: var(--text-dim); }
+
+.passwordWrap { position: relative; }
+.passwordWrap .input { padding-right: 40px; }
+
+.togglePass {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: .95rem;
+  line-height: 1;
+  padding: 2px;
+  color: var(--text-dim);
+  transition: color .2s;
+}
+.togglePass:hover { color: var(--text); }
+
+/* ── Role toggle ── */
+.roleToggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.roleBtn {
+  background: var(--bg-card2);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all .15s;
+}
+.roleBtn:hover   { border-color: var(--coral); color: var(--text); }
+.roleActive      { border-color: var(--coral-light); background: rgba(240,78,110,.1); color: var(--coral-light); }
+
+/* ── Error ── */
+.error {
+  background: rgba(220,38,38,.1);
+  border: 1px solid rgba(220,38,38,.3);
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: .83rem;
+  color: var(--red-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.error::before { content: '⚠️'; flex-shrink: 0; }
+
+/* ── Submit button ── */
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  padding: 11px;
+  font-size: .95rem;
+  margin-top: 4px;
+}
+
+/* ── Footer ── */
+.footer {
+  padding: 16px 28px 22px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: .85rem;
+  color: var(--text-muted);
+}
+
+.switchLink {
+  color: var(--coral-light);
+  font-weight: 600;
+  text-decoration: none;
+}
+.switchLink:hover { color: var(--text); }

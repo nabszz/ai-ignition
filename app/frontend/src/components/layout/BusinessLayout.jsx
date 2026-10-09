@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import useAppStore from '../../store/appStore.js';
+import useAppStore  from '../../store/appStore.js';
+import useAuthStore from '../../store/authStore.js';
 import styles from './Layout.module.css';
 
 const NAV = [
@@ -13,6 +14,7 @@ const NAV = [
 
 export default function BusinessLayout() {
   const { merchantProfile, supportHandovers, reset } = useAppStore();
+  const { logout } = useAuthStore();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -54,6 +56,9 @@ export default function BusinessLayout() {
           <button className={styles.switchBtn} title="Switch view"
             onClick={() => { reset(); navigate('/'); }}
           >⇄</button>
+          <button className={styles.logoutBtn} title="Sign out"
+            onClick={() => { logout(); navigate('/login'); }}
+          >⏻</button>
         </div>
       </aside>
       {open && <div className={styles.overlay} onClick={() => setOpen(false)} />}

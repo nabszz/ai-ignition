@@ -182,3 +182,260 @@ document.querySelectorAll('.inspo-chip').forEach((chip) => {
     chip.style.background = '';
   });
 });
+
+/* ============================================================
+   AUTH SECTION — tab switching, form logic, account storage
+   ============================================================ */
+
+// ── State ──────────────────────────────────────────────────
+let currentRole = 'customer'; // 'customer' | 'merchant'
+
+// ── Tab switching ──────────────────────────────────────────
+window.switchTab = function (tab) {
+  const panels = { signin: 'panel-signin', signup: 'panel-signup' };
+  const tabs   = { signin: 'tab-signin',   signup: 'tab-signup'   };
+
+  Object.keys(panels).forEach(key => {
+    const panel = document.getElementById(panels[key]);
+    const tabEl = document.getElementById(tabs[key]);
+    if (!panel || !tabEl) return;
+    if (key === tab) {
+      panel.classList.remove('auth-hidden');
+      tabEl.classList.add('auth-tab-active');
+      tabEl.setAttribute('aria-selected', 'true');
+    } else {
+      panel.classList.add('auth-hidden');
+      tabEl.classList.remove('auth-tab-active');
+      tabEl.setAttribute('aria-selected', 'false');
+    }
+  });
+
+  // Clear errors when switching
+  clearError('signin-error');
+  clearError('signup-error');
+};
+
+// ── Role toggle ────────────────────────────────────────────
+window.setRole = function (role) {
+  currentRole = role;
+  document.getElementById('role-customer')?.classList.toggle('role-active', role === 'customer');
+  document.getElementById('role-merchant')?.classList.toggle('role-active', role === 'merchant');
+};
+
+// ── Password visibility toggle ─────────────────────────────
+window.togglePass = function (inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const isText = input.type === 'text';
+  input.type    = isText ? 'password' : 'text';
+  btn.textContent = isText ? '👁️' : '🙈';
+};
+
+// ── Account storage (mirrors the app's Zustand auth store) ─
+// Reads/writes from the same localStorage key so accounts created
+// on the website are immediately usable in the app.
+const AUTH_KEY = '2am-shoppers-auth';
+
+function loadAccounts() {
+  try {
+    const raw   = localStorage.getItem(AUTH_KEY);
+    const state = raw ? JSON.parse(raw) : null;
+    return state?.state?.accounts ?? [
+      // Seed admin if store not yet initialised by the app
+      {
+        id:        'admin-001',
+        username:  'user',
+        password:  'password',
+        email:     'admin@2amshoppers.com',
+        name:      'Admin',
+        role:      'admin',
+        createdAt: '2026-01-01T00:00:00.000Z',
+      },
+    ];
+  } catch { return []; }
+}
+
+function saveAccount(account) {
+  try {
+    const raw      = localStorage.getItem(AUTH_KEY);
+    const existing = raw ? JSON.parse(raw) : { state: { accounts: [] }, version: 0 };
+    if (!existing.state) existing.state = { accounts: [] };
+    if (!existing.state.accounts) existing.state.accounts = [];
+    existing.state.accounts.push(account);
+    localStorage.setItem(AUTH_KEY, JSON.stringify(existing));
+  } catch (e) {
+    console.warn('Could not write to auth store:', e);
+  }
+}
+
+function setSession(account) {
+  try {
+    const raw      = localStorage.getItem(AUTH_KEY);
+    const existing = raw ? JSON.parse(raw) : { state: {}, version: 0 };
+    existing.state.currentUser = account;
+    existing.state.isLoggedIn  = true;
+    localStorage.setItem(AUTH_KEY, JSON.stringify(existing));
+  } catch (e) {
+    console.warn('Could not write session:', e);
+  }
+}
+
+// ── Show success state ──────────────────────────────────────
+function showSuccess(name, isNew) {
+  const panel = document.getElementById('auth-success');
+  const title = document.getElementById('auth-success-title');
+  const sub   = document.getElementById('auth-success-sub');
+  if (!panel || !title || !sub) return;
+
+  // Hide form panels
+  document.getElementById('panel-signin')?.classList.add('auth-hidden');
+  document.getElementById('panel-signup')?.classList.add('auth-hidden');
+  document.getElementById('auth-success')?.classList.remove('auth-hidden');
+
+  title.textContent = isNew
+    ? `Welcome, ${name}! 🎉`
+    : `Welcome back, ${name}!`;
+
+  sub.textContent = 'Your account is ready. Click below to open the app.';
+
+  // Auto-attempt redirect after 1.5 s
+  setTimeout(() => {
+    window.open('http://localhost:3003', '_blank', 'noopener');
+  }, 1500);
+}
+
+// ── Error helpers ───────────────────────────────────────────
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = msg;
+}
+
+function clearError(id) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = '';
+}
+
+function setLoading(btnId, loading) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  btn.disabled = loading;
+  if (loading) {
+    btn.dataset.original = btn.textContent;
+    btn.textContent = 'Please wait…';
+  } else {
+    btn.textContent = btn.dataset.original ?? btn.textContent;
+  }
+}
+
+// ── Sign-in handler ─────────────────────────────────────────
+window.handleSignin = function (e) {
+  e.preventDefault();
+  clearError('signin-error');
+
+  const username = document.getElementById('signin-username')?.value.trim();
+  const password = document.getElementById('signin-password')?.value;
+
+  if (!username || !password) {
+    showError('signin-error', 'Please fill in all fields.');
+    return;
+  }
+
+  setLoading('signin-btn', true);
+
+  setTimeout(() => {
+    const accounts = loadAccounts();
+    const account  = accounts.find(
+      a => a.username.toLowerCase() === username.toLowerCase()
+        && a.password === password
+    );
+
+    setLoading('signin-btn', false);
+
+    if (!account) {
+      showError('signin-error', 'Incorrect username or password.');
+      // Shake animation on the input
+      const input = document.getElementById('signin-username');
+      input?.classList.add('input-shake');
+      setTimeout(() => input?.classList.remove('input-shake'), 500);
+      return;
+    }
+
+    setSession(account);
+    showSuccess(account.name ?? account.username, false);
+  }, 500);
+};
+
+// ── Sign-up handler ─────────────────────────────────────────
+window.handleSignup = function (e) {
+  e.preventDefault();
+  clearError('signup-error');
+
+  const username = document.getElementById('signup-username')?.value.trim();
+  const email    = document.getElementById('signup-email')?.value.trim();
+  const password = document.getElementById('signup-password')?.value;
+  const confirm  = document.getElementById('signup-confirm')?.value;
+
+  if (!username) { showError('signup-error', 'Username is required.'); return; }
+  if (!password) { showError('signup-error', 'Password is required.'); return; }
+  if (password.length < 6) { showError('signup-error', 'Password must be at least 6 characters.'); return; }
+  if (password !== confirm) { showError('signup-error', 'Passwords do not match.'); return; }
+
+  setLoading('signup-btn', true);
+
+  setTimeout(() => {
+    const accounts = loadAccounts();
+    const taken    = accounts.find(a => a.username.toLowerCase() === username.toLowerCase());
+
+    if (taken) {
+      setLoading('signup-btn', false);
+      showError('signup-error', 'That username is already taken. Choose another.');
+      return;
+    }
+
+    const newAccount = {
+      id:        crypto.randomUUID?.() ?? Math.random().toString(36).slice(2),
+      username,
+      password,
+      email:     email ?? '',
+      name:      username,
+      role:      currentRole,
+      createdAt: new Date().toISOString(),
+    };
+
+    saveAccount(newAccount);
+    setSession(newAccount);
+    setLoading('signup-btn', false);
+    showSuccess(newAccount.name, true);
+  }, 500);
+};
+
+// ── Shake animation style injection ────────────────────────
+(function injectShakeStyle() {
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes inputShake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-6px); }
+      40%      { transform: translateX(6px); }
+      60%      { transform: translateX(-4px); }
+      80%      { transform: translateX(4px); }
+    }
+    .input-shake { animation: inputShake .4s ease; }
+  `;
+  document.head.appendChild(style);
+})();
+
+// ── Auto-scroll "Get started" nav buttons to section ───────
+document.querySelectorAll('a[href="#get-started"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.getElementById('get-started');
+    if (!target) return;
+    const offset = document.getElementById('nav')?.offsetHeight ?? 64;
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset - 16, behavior: 'smooth' });
+    // Focus the first input after scroll
+    setTimeout(() => {
+      document.getElementById('signin-username')?.focus();
+    }, 600);
+  });
+});
