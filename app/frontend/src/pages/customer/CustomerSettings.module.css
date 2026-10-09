@@ -31,3 +31,21 @@
 .subtle { font-size: .78rem; color: var(--text-dim); font-style: italic; margin-top: 6px; }
 
 .actions { display: flex; gap: 12px; align-items: center; padding-top: 24px; }
+
+/* Account-type toggle buttons */
+.typeBtn {
+  flex: 1;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all .15s;
+  text-align: center;
+}
+.typeBtn:hover  { border-color: var(--violet-light); color: var(--text); }
+.typeBtnOn      { border-color: var(--violet-light); background: rgba(124,58,237,.1); color: var(--violet-light); }

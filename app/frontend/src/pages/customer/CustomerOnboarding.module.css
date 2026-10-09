@@ -113,3 +113,46 @@
   justify-content: space-between;
   align-items: center;
 }
+
+/* ── User-type picker (step 0) ── */
+.typeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.typeCard {
+  background: var(--bg-card2);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all .2s;
+}
+.typeCard:hover      { border-color: var(--violet-light); transform: translateY(-2px); }
+.typeSelected        { border-color: var(--violet-light); background: rgba(124,58,237,.1); }
+
+.typeEmoji { font-size: 2rem; display: block; margin-bottom: 10px; }
+.typeLabel { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.typeDesc  { font-size: .78rem; color: var(--text-muted); line-height: 1.4; }
+
+/* User-type badge shown on step 1+ */
+.userTypeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .78rem;
+  font-weight: 600;
+  background: rgba(124,58,237,.12);
+  color: var(--violet-light);
+  border: 1px solid rgba(124,58,237,.28);
+  border-radius: 99px;
+  padding: 4px 12px;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 420px) {
+  .typeGrid { grid-template-columns: 1fr; }
+}

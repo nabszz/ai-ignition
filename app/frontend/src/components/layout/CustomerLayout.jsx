@@ -26,8 +26,8 @@ export default function CustomerLayout() {
         <div className={styles.logo}>
           <span>🛒</span><span>2am Shoppers</span>
         </div>
-        <div className={styles.modeChip} style={{ background: 'rgba(240,78,110,.12)', color: 'var(--coral-light)', borderColor: 'rgba(240,78,110,.25)' }}>
-          👤 Customer
+        <div className={styles.modeChip} style={{ background: 'rgba(124,58,237,.12)', color: 'var(--violet-light)', borderColor: 'rgba(124,58,237,.25)' }}>
+          {customerProfile?.userType === 'working' ? '💼 Working Adult' : '🎓 Student'}
         </div>
         <nav className={styles.nav}>
           {NAV.map(({ to, icon, label, end }) => (
@@ -50,7 +50,7 @@ export default function CustomerLayout() {
             </div>
             <div>
               <div className={styles.userName}>{customerProfile?.name ?? 'Shopper'}</div>
-              <div className={styles.userSub}>Customer</div>
+              <div className={styles.userSub}>{customerProfile?.userType === 'working' ? 'Working Adult' : 'Student'}</div>
             </div>
           </div>
           <button className={styles.switchBtn} title="Switch view"

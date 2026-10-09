@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 import useAppStore from '../../store/appStore.js';
 import styles from './CustomerHome.module.css';
 
-// Demo notifications shown on home screen
-const DEMO_NOTIFS = [
+// Demo notifications — student and working adult variants
+const STUDENT_NOTIFS = [
+  { id: 'n1', emoji: '👟', text: "Still thinking about those sneakers? They're now within your $30 budget.", type: 'price_drop' },
+  { id: 'n2', emoji: '☕', text: 'Coffee check — running low, or still stocked from last week?', type: 'replenishment' },
+  { id: 'n3', emoji: '📅', text: "You asked for an allowance day reminder — want to revisit your wishlist?", type: 'reminder' },
+];
+
+const WORKING_NOTIFS = [
   { id: 'n1', emoji: '👀', text: "Still thinking about those office shoes? They're now within your $40 budget.", type: 'price_drop' },
   { id: 'n2', emoji: '☕', text: 'Coffee check — running low, or still stocked?', type: 'replenishment' },
   { id: 'n3', emoji: '📅', text: "You asked for a payday reminder — want to revisit your wishlist?", type: 'reminder' },
@@ -13,17 +19,22 @@ const DEMO_NOTIFS = [
 export default function CustomerHome() {
   const { customerProfile, wishlist, conversations, reminders, purchaseHistory } = useAppStore();
 
-  const name       = customerProfile?.name ?? 'there';
-  const hour       = new Date().getHours();
-  const greeting   = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
-  const dueItems   = wishlist.filter(i => i.reminderDate).length;
+  const name        = customerProfile?.name ?? 'there';
+  const isStudent   = customerProfile?.userType === 'student';
+  const hour        = new Date().getHours();
+  const greeting    = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  const dueItems    = wishlist.filter(i => i.reminderDate).length;
   const activeConvs = conversations.filter(c => c.status === 'active').length;
-  const purchases  = purchaseHistory.length;
+  const purchases   = purchaseHistory.length;
 
   return (
     <div>
       <h1 className="page-title">{greeting}, {name} 👋</h1>
-      <p className="page-sub">Here's what's relevant for you today.</p>
+      <p className="page-sub">
+        {isStudent
+          ? "Here's what's relevant for you today — student picks and reminders."
+          : "Here's what's relevant for you today — work-life shopping made easier."}
+      </p>
 
       {/* Stats row */}
       <div className={styles.statsRow}>
@@ -51,7 +62,7 @@ export default function CustomerHome() {
       {/* Notifications */}
       <h2 className="section-title" style={{ marginTop: 28 }}>From your AI companion</h2>
       <div className={styles.notifList}>
-        {DEMO_NOTIFS.map(n => (
+        {(isStudent ? STUDENT_NOTIFS : WORKING_NOTIFS).map(n => (
           <NotifCard key={n.id} notif={n} />
         ))}
       </div>

@@ -14,12 +14,12 @@ const useAppStore = create(
     (set, get) => ({
 
       // ── App mode ─────────────────────────────────────────────
-      // 'customer' | 'business' | null (not yet chosen)
+      // 'student' | 'working' | null (not yet chosen)
       appMode: null,
       setAppMode: (mode) => set({ appMode: mode }),
 
-      // ── Customer ──────────────────────────────────────────────
-      customerProfile: null,   // { name, interests[], budget, quietStart, quietEnd, paydayDate }
+      // ── Customer / Student ───────────────────────────────────
+      customerProfile: null,   // { name, userType:'student'|'working', interests[], budget, quietStart, quietEnd, paydayDate }
       setCustomerProfile: (p) => set({ customerProfile: p }),
 
       wishlist: [],            // [{ id, title, url, price, budget, savedAt, reminderDate }]
@@ -61,7 +61,7 @@ const useAppStore = create(
       recordPurchase: (p) =>
         set((s) => ({ purchaseHistory: [...s.purchaseHistory, { id: crypto.randomUUID(), confirmedAt: new Date().toISOString(), ...p }] })),
 
-      // ── Business / Merchant ──────────────────────────────────
+      // ── Business / Working Adult ──────────────────────────────
       merchantProfile: null,   // { name, goal, contactLimitPerDay, supportEmail }
       setMerchantProfile: (p) => set({ merchantProfile: p }),
 

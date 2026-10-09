@@ -11,7 +11,7 @@ export default function ModeSelectPage() {
 
   function choose(mode) {
     setAppMode(mode);
-    if (mode === 'customer') {
+    if (mode === 'student') {
       navigate(customerProfile ? '/customer' : '/customer/onboarding');
     } else {
       navigate(merchantProfile ? '/business' : '/business/onboarding');
@@ -43,7 +43,7 @@ export default function ModeSelectPage() {
           The <span className="gradient-text">2am Shoppers</span>
         </h1>
         <p className={styles.sub}>
-          An AI shopping companion for working youths and the businesses that serve them.
+          An AI shopping companion — tell us who you are so we can personalise your experience.
         </p>
 
         {/* Admin shortcut banner */}
@@ -62,28 +62,30 @@ export default function ModeSelectPage() {
         )}
 
         <div className={styles.cards}>
+          {/* Student card */}
           <button
-            className={`${styles.card} ${styles.cardCustomer}`}
-            onClick={() => choose('customer')}
+            className={`${styles.card} ${styles.cardStudent}`}
+            onClick={() => choose('student')}
           >
-            <span className={styles.cardEmoji}>👤</span>
-            <h2>I'm a shopper</h2>
-            <p>Save products, set budgets, get personalised reminders and shop smarter.</p>
-            {customerProfile && (
+            <span className={styles.cardEmoji}>🎓</span>
+            <h2>I'm a student</h2>
+            <p>Save products around your school budget, set payday reminders and get picks that fit student life.</p>
+            {customerProfile?.userType === 'student' && (
               <span className={styles.returning}>← Continue as {customerProfile.name}</span>
             )}
             <span className={styles.cardArrow}>→</span>
           </button>
 
+          {/* Working adult card */}
           <button
-            className={`${styles.card} ${styles.cardBusiness}`}
-            onClick={() => choose('business')}
+            className={`${styles.card} ${styles.cardWorking}`}
+            onClick={() => choose('working')}
           >
             <span className={styles.cardEmoji}>💼</span>
-            <h2>I'm a merchant</h2>
-            <p>Turn existing customer data into personalised journeys that drive repeat purchases.</p>
-            {merchantProfile && (
-              <span className={styles.returning}>← Continue as {merchantProfile.name}</span>
+            <h2>I'm a working adult</h2>
+            <p>Shop smarter around your work schedule — track office essentials, get payday deals and reorder what you love.</p>
+            {customerProfile?.userType === 'working' && (
+              <span className={styles.returning}>← Continue as {customerProfile.name}</span>
             )}
             <span className={styles.cardArrow}>→</span>
           </button>

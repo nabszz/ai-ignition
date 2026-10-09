@@ -59,17 +59,17 @@ export default function SignupPage() {
           <div className={styles.roleToggle}>
             <button
               type="button"
-              className={`${styles.roleBtn} ${role === 'customer' ? styles.roleActive : ''}`}
-              onClick={() => setRole('customer')}
+              className={`${styles.roleBtn} ${role === 'student' ? styles.roleActive : ''}`}
+              onClick={() => setRole('student')}
             >
-              👤 Shopper
+              🎓 Student
             </button>
             <button
               type="button"
-              className={`${styles.roleBtn} ${role === 'merchant' ? styles.roleActive : ''}`}
-              onClick={() => setRole('merchant')}
+              className={`${styles.roleBtn} ${role === 'working' ? styles.roleActive : ''}`}
+              onClick={() => setRole('working')}
             >
-              💼 Merchant
+              💼 Working Adult
             </button>
           </div>
 

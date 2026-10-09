@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import useAppStore from '../../store/appStore.js';
 import styles from './CustomerSettings.module.css';
 
-const INTERESTS = ['Fashion', 'Coffee', 'Beauty', 'Workday Essentials', 'Electronics', 'Food & Snacks', 'Sports', 'Home & Living'];
+const STUDENT_INTERESTS = ['Fashion', 'Coffee', 'Beauty', 'Stationery & Study', 'Electronics', 'Food & Snacks', 'Sports', 'Books'];
+const WORKING_INTERESTS = ['Fashion', 'Coffee', 'Beauty', 'Workday Essentials', 'Electronics', 'Food & Snacks', 'Home & Living', 'Gadgets'];
 
 export default function CustomerSettings() {
   const { customerProfile, setCustomerProfile, reset } = useAppStore();
@@ -11,6 +12,7 @@ export default function CustomerSettings() {
 
   const [form, setForm] = useState({
     name:        customerProfile?.name        ?? '',
+    userType:    customerProfile?.userType    ?? 'student',
     interests:   customerProfile?.interests   ?? [],
     budget:      customerProfile?.budget      ?? '',
     quietStart:  customerProfile?.quietStart  ?? '22:00',
@@ -20,11 +22,18 @@ export default function CustomerSettings() {
   });
   const [saved, setSaved] = useState(false);
 
+  const INTERESTS = form.userType === 'working' ? WORKING_INTERESTS : STUDENT_INTERESTS;
+  const isStudent = form.userType === 'student';
+
   function toggleInterest(i) {
     setForm(f => ({
       ...f,
       interests: f.interests.includes(i) ? f.interests.filter(x => x !== i) : [...f.interests, i],
     }));
+  }
+
+  function switchType(t) {
+    setForm(f => ({ ...f, userType: t, interests: [] }));
   }
 
   function save(e) {
@@ -47,6 +56,28 @@ export default function CustomerSettings() {
       <p className="page-sub">Update your preferences at any time.</p>
 
       <form className={styles.form} onSubmit={save}>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionHead}>Account type</h2>
+          <div className={styles.row}>
+            <button
+              type="button"
+              className={`${styles.typeBtn} ${form.userType === 'student' ? styles.typeBtnOn : ''}`}
+              onClick={() => switchType('student')}
+            >
+              🎓 Student
+            </button>
+            <button
+              type="button"
+              className={`${styles.typeBtn} ${form.userType === 'working' ? styles.typeBtnOn : ''}`}
+              onClick={() => switchType('working')}
+            >
+              💼 Working Adult
+            </button>
+          </div>
+          <p className={styles.subtle}>Switching type resets your interests selection.</p>
+        </section>
+
         <section className={styles.section}>
           <h2 className={styles.sectionHead}>Profile</h2>
           <label className={styles.label}>
@@ -78,7 +109,7 @@ export default function CustomerSettings() {
               value={form.budget}
               onChange={e => setForm({ ...form, budget: e.target.value })} />
           </label>
-          <p className={styles.subtle}>The app will not infer your salary from your age or habits.</p>
+          <p className={styles.subtle}>The app will not infer your income from your age or habits.</p>
         </section>
 
         <section className={styles.section}>
@@ -105,7 +136,7 @@ export default function CustomerSettings() {
             </label>
           </div>
           <label className={styles.label}>
-            Payday reminder (day of month)
+            {isStudent ? 'Allowance day reminder (day of month)' : 'Payday reminder (day of month)'}
             <input className={styles.input} type="number" min="1" max="31"
               placeholder="e.g. 25"
               value={form.paydayDate}

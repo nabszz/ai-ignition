@@ -142,8 +142,8 @@
 }
 .card:hover { transform: translateY(-4px); }
 
-.cardCustomer:hover { border-color: var(--coral-light); background: rgba(240,78,110,.06); }
-.cardBusiness:hover { border-color: var(--amber-light); background: rgba(245,158,11,.06); }
+.cardStudent:hover  { border-color: var(--violet-light); background: rgba(124,58,237,.06); }
+.cardWorking:hover  { border-color: var(--coral-light);  background: rgba(240,78,110,.06); }
 
 .cardEmoji { font-size: 2rem; display: block; margin-bottom: 12px; }
 .card h2   { font-size: 1.05rem; color: var(--text); margin-bottom: 8px; }
@@ -164,8 +164,8 @@
   font-size: 1.1rem;
   color: var(--text-dim);
 }
-.card:hover .cardArrow           { color: var(--coral-light); }
-.cardBusiness:hover .cardArrow   { color: var(--amber-light); }
+.card:hover .cardArrow            { color: var(--violet-light); }
+.cardWorking:hover .cardArrow     { color: var(--coral-light); }
 
 .hackathon { font-size: .75rem; color: var(--text-dim); }
 
